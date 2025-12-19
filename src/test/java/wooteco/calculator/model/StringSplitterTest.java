@@ -10,7 +10,8 @@ public class StringSplitterTest {
     @Test
     void splitString_문자열을_구분자로_분리한다() {
         String input = "//;\n1;2;3";
-        StringSplitter stringSplitter = new StringSplitter(input);
+        String customDelimiter = ";";
+        StringSplitter stringSplitter = new StringSplitter(input, customDelimiter);
 
         String[] result = stringSplitter.getSplitedInput();
 

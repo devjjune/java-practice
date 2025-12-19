@@ -8,10 +8,10 @@ public class DelimiterFinder {
     }
 
     private String findDelimiter(String input) {
-        int frontIndex = input.indexOf("//");
-        int lastIndex = input.indexOf("\n");
-
-        return input.substring(frontIndex + 2, lastIndex);
+        if (input.startsWith("//") || input.contains("\n")) {
+            this.customDelimiter = input.substring(2, input.indexOf("\n"));
+        }
+        return customDelimiter;
     }
 
     public String getCustomDelimiter() {
