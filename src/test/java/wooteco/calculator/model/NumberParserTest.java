@@ -12,9 +12,9 @@ public class NumberParserTest {
     @Test
     void parse_문자열을_숫자로_바꾼다() {
         String[] splitedInput = {"1", "2", "3"};
-        NumberParser numberParser = new NumberParser(splitedInput);
+        NumberParser numberParser = new NumberParser();
 
-        List<Integer> result = numberParser.getNumbers();
+        List<Integer> result = numberParser.parse(splitedInput);
 
         assertThat(result).containsExactly(1, 2, 3);
     }
