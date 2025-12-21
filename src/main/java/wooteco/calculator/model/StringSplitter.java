@@ -10,7 +10,7 @@ public class StringSplitter {
     }
 
     private String[] splitString(String input, String customDelimiter) {
-        if (input.startsWith("//") || input.contains("\n")) {
+        if (input.startsWith("//") && input.contains("\n")) {
             String numbersPart = input.substring(input.indexOf("\n") + 1);
             this.splitedInput = numbersPart.split(",|:|" + Pattern.quote(customDelimiter));
         } else {

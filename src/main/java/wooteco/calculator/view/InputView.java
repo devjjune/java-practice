@@ -8,7 +8,15 @@ public class InputView {
     public static String readInput() {
         System.out.println(INPUT_MESSAGE);
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+
+        String first = scanner.nextLine();
+
+        if (first.startsWith("//")) {
+            String second = scanner.nextLine();
+            return first + "\n" + second;
+        }
+
+        return first;
     }
 
 }
