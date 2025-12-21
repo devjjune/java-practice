@@ -10,11 +10,12 @@ public class StringSplitter {
     }
 
     private String[] splitString(String input, String customDelimiter) {
-        if (input.startsWith("//") && input.contains("\n")) {
-            String numbersPart = input.substring(input.indexOf("\n") + 1);
-            this.splitedInput = numbersPart.split(",|:|" + Pattern.quote(customDelimiter));
+        if (customDelimiter == null) {
+            this.splitedInput = input.split("[,:]");
+
         } else {
-            this.splitedInput = input.split(",|:|");
+            String numbersPart = input.substring(input.indexOf("\n") + 1);
+            this.splitedInput = numbersPart.split("[,:]" + Pattern.quote(customDelimiter));
         }
 
         return splitedInput;
