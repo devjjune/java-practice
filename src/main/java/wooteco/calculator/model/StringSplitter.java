@@ -9,16 +9,13 @@ public class StringSplitter {
         this.splitedInput = splitString(input, customDelimiter);
     }
 
-    private String[] splitString(String input, String customDelimiter) {
-        if (customDelimiter == null) {
-            this.splitedInput = input.split("[,:]");
-
-        } else {
+    private String[] splitString (String input, String customDelimiter) {
+        if (input.startsWith("//") && input.contains("\n")) {
             String numbersPart = input.substring(input.indexOf("\n") + 1);
-            this.splitedInput = numbersPart.split("[,:]" + Pattern.quote(customDelimiter));
+            return numbersPart.split(",|:|" + Pattern.quote(customDelimiter));
+        } else {
+            return input.split("[,:]");
         }
-
-        return splitedInput;
     }
 
     public String[] getSplitedInput() {
