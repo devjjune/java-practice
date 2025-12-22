@@ -16,4 +16,13 @@ public class InputViewTest {
         assertThatThrownBy(() -> inputView.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("커스텀 구분자가 두 개 이상이면 예외가 발생한다")
+    @Test
+    void validateSingleCustomDelimiter_커스텀구분자_개수() {
+        String input = "//!;\n1;2;3";
+
+        assertThatThrownBy(() -> inputView.validateInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
