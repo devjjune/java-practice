@@ -19,4 +19,14 @@ public class InputView {
         return first;
     }
 
+    public void validateInput(String input) {
+        validateNotBlank(input);
+    }
+
+    private void validateNotBlank(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+    }
+
 }
