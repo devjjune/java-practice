@@ -13,7 +13,7 @@ public class InputViewTest {
     void validateNotBlank_공백을_입력하면_예외가_발생한다() {
         String input = "  ";
 
-        assertThatThrownBy(() -> inputView.validateInput(input))
+        assertThatThrownBy(() -> inputView.validateInputFormat(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -22,7 +22,17 @@ public class InputViewTest {
     void validateSingleCustomDelimiter_커스텀구분자_개수() {
         String input = "//!;\n1;2;3";
 
-        assertThatThrownBy(() -> inputView.validateInput(input))
+        assertThatThrownBy(() -> inputView.validateInputFormat(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("양의 정수 이외의 문자가 포함되면 예외가 발생한다")
+    @Test
+    void splitAndValidateNumbers_양의정수이외_예외발생() {
+        String input = "//!;\n1;a;-2";
+        String customDelimiter = ";";
+
+        assertThatThrownBy(() -> inputView.splitAndValidateNumbers(input, customDelimiter))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
