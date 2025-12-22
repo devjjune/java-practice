@@ -21,12 +21,13 @@ public class InputView {
         return first;
     }
 
-    public void validateInput(String input) {
+    public void validateInput(String input, String customDelimiter) {
         validateNotBlank(input);
         validateSingleCustomDelimiter(input);
 
-        String[] tokens = StringSplitter(input);
-        validatePositiveNumbers(tokens);
+        StringSplitter stringSplitter = new StringSplitter(input, customDelimiter);
+        String[] splitedInput = stringSplitter.getSplitedInput();
+        validatePositiveNumbers(splitedInput);
     }
 
     private void validateNotBlank(String input) {
