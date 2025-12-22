@@ -21,11 +21,31 @@ public class InputView {
 
     public void validateInput(String input) {
         validateNotBlank(input);
+        validateSingleCustomDelimiter(input);
     }
 
     private void validateNotBlank(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+    }
+
+    private void validateSingleCustomDelimiter(String input) {
+        if (!input.startsWith("//")) {
+            return;
+        }
+
+        int delimiterStartIndex = 2;
+        int delimiterEndIndex = input.indexOf("\n");
+
+        if (delimiterEndIndex == -1) {
+            throw new IllegalArgumentException("커스텀 구분자 형식이 올바르지 않습니다.");
+        }
+
+        String delimiterPart = input.substring(delimiterStartIndex, delimiterEndIndex);
+
+        if (delimiterPart.length() != 1) {
+            throw new IllegalArgumentException("커스텀 구분자는 1개만 허용됩니다.");
         }
     }
 
