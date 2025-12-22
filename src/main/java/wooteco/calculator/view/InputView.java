@@ -1,5 +1,7 @@
 package wooteco.calculator.view;
 
+import wooteco.calculator.model.StringSplitter;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -22,6 +24,9 @@ public class InputView {
     public void validateInput(String input) {
         validateNotBlank(input);
         validateSingleCustomDelimiter(input);
+
+        String[] tokens = StringSplitter(input);
+        validatePositiveNumbers(tokens);
     }
 
     private void validateNotBlank(String input) {
@@ -46,6 +51,19 @@ public class InputView {
 
         if (delimiterPart.length() != 1) {
             throw new IllegalArgumentException("커스텀 구분자는 1개만 허용됩니다.");
+        }
+    }
+
+    private void validatePositiveNumbers(String[] splitedInput) {
+        for (String letter : splitedInput) {
+            try {
+                int number = Integer.parseInt(letter);
+                if (number <= 0) {
+                    throw new IllegalArgumentException("양의 정수만 입력할 수 있습니다.");
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
+            }
         }
     }
 
