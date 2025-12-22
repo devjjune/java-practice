@@ -21,10 +21,12 @@ public class InputView {
         return first;
     }
 
-    public void validateInput(String input, String customDelimiter) {
+    public void validateInputFormat(String input) {
         validateNotBlank(input);
         validateSingleCustomDelimiter(input);
+    }
 
+    public void splitAndValidateNumbers(String input, String customDelimiter) {
         StringSplitter stringSplitter = new StringSplitter(input, customDelimiter);
         String[] splitedInput = stringSplitter.getSplitedInput();
         validatePositiveNumbers(splitedInput);
