@@ -8,7 +8,7 @@ public class DelimiterFinder {
     }
 
     private String findDelimiter(String input) {
-        if (input.startsWith("//") || input.contains("\n")) {
+        if (input.startsWith("//") && input.contains("\n")) {
             this.customDelimiter = input.substring(2, input.indexOf("\n"));
         }
         return customDelimiter;
