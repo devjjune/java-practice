@@ -13,7 +13,9 @@ public class RaceController {
         RaceValidator validator = new RaceValidator();
         RaceService service = new RaceService();
 
-        RaceInputView inputView = new RaceInputView();
+        String inputNames = RaceInputView.readNames();
+        int inputTries = RaceInputView.readTries();
+
         List<String> carNameList = inputView.readNames();
         validator.validateName(carNameList);
 
