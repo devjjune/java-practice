@@ -1,7 +1,9 @@
 package wooteco.racingcar.validator;
 
+import java.util.List;
+
 public class RaceValidator {
-    public static void validateName(List<String> carNameList) {
+    public void validateName(List<String> carNameList) {
         if (carNameList.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         }
@@ -16,7 +18,7 @@ public class RaceValidator {
         }
     }
 
-    public static void validateInt(int input) {
+    public void validateInt(int input) {
         if (input <= 0) {
             throw new IllegalArgumentException("1 이상의 정수를 입력하세요.");
         }

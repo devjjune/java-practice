@@ -1,17 +1,30 @@
 package wooteco.racingcar.controller;
 
+import wooteco.racingcar.service.RaceService;
+import wooteco.racingcar.validator.RaceValidator;
+import wooteco.racingcar.view.RaceInputView;
+import wooteco.racingcar.view.RaceOutputView;
+
+import java.util.List;
+import java.util.Map;
+
 public class RaceController {
-    public static void run() {
-        List<String> carNameList = InputHandler.readNames();
-        Validator.validateName(carNameList);
+    public void run() {
+        RaceValidator validator = new RaceValidator();
+        RaceService service = new RaceService();
 
-        int numberOfTries = InputHandler.readTries();
-        Validator.validateInt(numberOfTries);
+        RaceInputView inputView = new RaceInputView();
+        List<String> carNameList = inputView.readNames();
+        validator.validateName(carNameList);
 
-        Map<String, Integer> carPositions = GameService.initializeCarPositions(carNameList);
+        int numberOfTries = inputView.readTries();
+        validator.validateInt(numberOfTries);
 
-        OutputView.printStartMessage();
-        Map<String, Integer> result = GameService.playRounds(numberOfTries, carPositions);
-        GameService.calculateWinner(carPositions);
+        Map<String, Integer> carPositions = service.initializeCarPositions(carNameList);
+
+        RaceOutputView outputView = new RaceOutputView();
+        outputView.printStartMessage();
+        Map<String, Integer> result = service.playRounds(numberOfTries, carPositions);
+        service.calculateWinner(carPositions);
     }
 }

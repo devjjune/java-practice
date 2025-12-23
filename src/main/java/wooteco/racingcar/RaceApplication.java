@@ -1,7 +1,10 @@
 package wooteco.racingcar;
 
+import wooteco.racingcar.controller.RaceController;
+
 public class RaceApplication {
     public static void main(String[] args) {
-        GameController.run();
+        RaceController controller = new RaceController();
+        controller.run();
     }
 }

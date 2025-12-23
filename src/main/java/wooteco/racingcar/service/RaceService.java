@@ -1,7 +1,11 @@
 package wooteco.racingcar.service;
 
+import wooteco.racingcar.view.RaceOutputView;
+
+import java.util.*;
+
 public class RaceService {
-    public static Map<String, Integer> initializeCarPositions(List<String> carList) {
+    public Map<String, Integer> initializeCarPositions(List<String> carList) {
         Map<String, Integer> scores = new HashMap<>();
         for (int i = 0; i < carList.size(); i++) {
             scores.put(carList.get(i), 0);
@@ -9,15 +13,16 @@ public class RaceService {
         return scores;
     }
 
-    public static Map<String, Integer> playRounds(int numberOfTries, Map<String, Integer> carPositions) {
+    public Map<String, Integer> playRounds(int numberOfTries, Map<String, Integer> carPositions) {
         for (int i = 0; i < numberOfTries; i++) {
             playOneTime(carPositions);
-            OutputView.printResult(carPositions);
+            RaceOutputView outputView = new RaceOutputView();
+            outputView.printResult(carPositions);
         }
         return carPositions;
     }
 
-    public static Map<String, Integer> playOneTime(Map<String, Integer> carPositions) {
+    public Map<String, Integer> playOneTime(Map<String, Integer> carPositions) {
         for (String eachCar : carPositions.keySet()) {
             int eachPosition = carPositions.get(eachCar);
             eachPosition = attemptMove(eachPosition);
@@ -26,7 +31,7 @@ public class RaceService {
         return carPositions;
     }
 
-    public static int attemptMove(int eachPosition) {
+    public int attemptMove(int eachPosition) {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
             eachPosition += 1;
@@ -34,18 +39,20 @@ public class RaceService {
         return eachPosition;
     }
 
-    public static void calculateWinner(Map<String, Integer> carPositions) {
+    public void calculateWinner(Map<String, Integer> carPositions) {
         int maxScore = Collections.max(carPositions.values());
         List<String> winnersName = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
-            GameService.addIfMaxScore(entry, maxScore, winnersName);
+            RaceService service = new RaceService();
+            service.addIfMaxScore(entry, maxScore, winnersName);
         }
 
-        OutputView.printWinner(winnersName);
+        RaceOutputView outputView = new RaceOutputView();
+        outputView.printWinner(winnersName);
     }
 
-    public static void addIfMaxScore(
+    public void addIfMaxScore(
             Map.Entry<String, Integer> entry, int maxScore, List<String> winners) {
         if (entry.getValue() == maxScore) {
             winners.add(entry.getKey());
