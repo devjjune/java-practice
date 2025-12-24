@@ -26,7 +26,9 @@ public class RaceService {
 
     public Map<String, Integer> playAllTurn(int inputTries, Map<String, Integer> carPositions) {
         for (int i = 0; i < inputTries; i++) {
+            System.out.println("[" + (i+1) + "회차 시도]");
             playEachTurn(carPositions);
+            System.out.println();
         }
 
         return carPositions;
