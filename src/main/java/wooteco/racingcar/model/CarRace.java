@@ -8,10 +8,11 @@ import java.util.Random;
 public class CarRace {
     public Map<String, Integer> carPositions = new HashMap<>();
 
-    public void initializeScore(List<String> carNames) {
+    public Map<String, Integer> initializeScore(List<String> carNames) {
         for (String name : carNames) {
             carPositions.put(name, 0);
         }
+        return carPositions;
     }
 
     public Map<String, Integer> movePosition(Map<String, Integer> carPositions) {

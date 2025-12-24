@@ -16,17 +16,7 @@ public class RaceController {
         String inputNames = RaceInputView.readNames();
         int inputTries = RaceInputView.readTries();
 
-        List<String> carNameList = inputView.readNames();
-        validator.validateName(carNameList);
-
-        int numberOfTries = inputView.readTries();
-        validator.validateInt(numberOfTries);
-
-        Map<String, Integer> carPositions = service.initializeCarPositions(carNameList);
-
-        RaceOutputView outputView = new RaceOutputView();
-        outputView.printStartMessage();
-        Map<String, Integer> result = service.playRounds(numberOfTries, carPositions);
-        service.calculateWinner(carPositions);
+        Map<String, Integer> carPositions = service.startRace(inputNames);
+        service.playAllTurn(inputTries, carPositions);
     }
 }

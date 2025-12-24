@@ -6,12 +6,12 @@ import wooteco.racingcar.model.Cars;
 import java.util.*;
 
 public class RaceService {
-    public void startRace(String inputNames) {
+    public Map<String, Integer> startRace(String inputNames) {
         Cars cars = new Cars();
         CarRace race = new CarRace();
 
         List<String> carNames = cars.parseInputName(inputNames);
-        race.initializeScore(carNames);
+        return race.initializeScore(carNames);
     }
 
     public void playEachTurn(Map<String, Integer> carPositions) {
@@ -21,5 +21,13 @@ public class RaceService {
         for (String car : carNewPositions.keySet()) {
             System.out.println(car + " : " + "-".repeat(carNewPositions.get(car)));
         }
+    }
+
+    public Map<String, Integer> playAllTurn(int inputTries, Map<String, Integer> carPositions) {
+        for (int i = 0; i < inputTries; i++) {
+            playEachTurn(carPositions);
+        }
+
+        return carPositions;
     }
 }
