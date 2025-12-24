@@ -9,21 +9,19 @@ import java.util.List;
 import java.util.Map;
 
 public class Result {
-    public void calculateWinner(Map<String, Integer> carPositions) {
-        int maxScore = Collections.max(carPositions.values());
-        List<String> winnersName = new ArrayList<>();
+    public List<String> winnersName = new ArrayList<>();
 
-        for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
-            RaceService service = new RaceService();
-            service.addIfMaxScore(entry, maxScore, winnersName);
+    public List<String> calculateWinner(Map<String, Integer> carFinalPositions) {
+        int maxScore = Collections.max(carFinalPositions.values());
+
+        for (Map.Entry<String, Integer> entry : carFinalPositions.entrySet()) {
+            addIfMaxScore(entry, maxScore, winnersName);
         }
 
-        RaceOutputView outputView = new RaceOutputView();
-        outputView.printWinner(winnersName);
+        return winnersName;
     }
 
-    public void addIfMaxScore(
-            Map.Entry<String, Integer> entry, int maxScore, List<String> winners) {
+    public void addIfMaxScore(Map.Entry<String, Integer> entry, int maxScore, List<String> winners) {
         if (entry.getValue() == maxScore) {
             winners.add(entry.getKey());
         }

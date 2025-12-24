@@ -2,6 +2,7 @@ package wooteco.racingcar.service;
 
 import wooteco.racingcar.model.CarRace;
 import wooteco.racingcar.model.Cars;
+import wooteco.racingcar.model.Result;
 
 import java.util.*;
 
@@ -29,5 +30,10 @@ public class RaceService {
         }
 
         return carPositions;
+    }
+
+    public List<String> findResult(Map<String, Integer> carFinalPositions) {
+        Result result = new Result();
+        return result.calculateWinner(carFinalPositions);
     }
 }

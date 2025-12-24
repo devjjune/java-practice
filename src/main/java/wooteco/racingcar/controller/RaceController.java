@@ -17,6 +17,7 @@ public class RaceController {
         int inputTries = RaceInputView.readTries();
 
         Map<String, Integer> carPositions = service.startRace(inputNames);
-        service.playAllTurn(inputTries, carPositions);
+        Map<String, Integer> carFinalPositions = service.playAllTurn(inputTries, carPositions);
+        List<String> winnersName = service.findResult(carFinalPositions);
     }
 }
