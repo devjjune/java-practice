@@ -10,14 +10,16 @@ import java.util.Map;
 
 public class RaceController {
     public void run() {
-        RaceValidator validator = new RaceValidator();
         RaceService service = new RaceService();
 
         String inputNames = RaceInputView.readNames();
         int inputTries = RaceInputView.readTries();
 
+        RaceOutputView.printResultMessage();
         Map<String, Integer> carPositions = service.startRace(inputNames);
         Map<String, Integer> carFinalPositions = service.playAllTurn(inputTries, carPositions);
         List<String> winnersName = service.findResult(carFinalPositions);
+
+        RaceOutputView.printWinner(winnersName);
     }
 }

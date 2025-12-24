@@ -4,20 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 public class RaceOutputView {
-    public void printStartMessage() {
-        System.out.println("실행 결과");
+    final static String RESULT_MESSAGE = "실행 결과";
+
+    public static void printResultMessage() {
+        System.out.println(RESULT_MESSAGE);
     }
 
-    public void printResult(Map<String, Integer> carPositions) {
-        for (String eachCar : carPositions.keySet()) {
-            int eachScore = carPositions.get(eachCar);
-            System.out.println(eachCar + " : " + "-".repeat(eachScore));
-        }
-
-        System.out.println();
-    }
-
-    public void printWinner(List<String> winnersName) {
+    public static void printWinner(List<String> winnersName) {
         System.out.println();
         System.out.println("최종 우승자 : " + String.join(", ", winnersName));
     }
