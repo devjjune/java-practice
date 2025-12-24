@@ -1,7 +1,6 @@
 package wooteco.racingcar.view;
 
 import java.util.List;
-import java.util.Map;
 
 public class RaceOutputView {
     final static String RESULT_MESSAGE = "실행 결과";

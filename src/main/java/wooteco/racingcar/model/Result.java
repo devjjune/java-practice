@@ -1,8 +1,5 @@
 package wooteco.racingcar.model;
 
-import wooteco.racingcar.service.RaceService;
-import wooteco.racingcar.view.RaceOutputView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

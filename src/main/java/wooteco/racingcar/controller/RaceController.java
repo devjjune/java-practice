@@ -1,7 +1,6 @@
 package wooteco.racingcar.controller;
 
 import wooteco.racingcar.service.RaceService;
-import wooteco.racingcar.validator.RaceValidator;
 import wooteco.racingcar.view.RaceInputView;
 import wooteco.racingcar.view.RaceOutputView;
 
