@@ -3,13 +3,24 @@ package wooteco.racingcar.model;
 import java.util.*;
 
 public class Cars {
-    public List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public void generateCars(String inputNames) {
+    public Cars(String inputNames) {
+        this.cars = initCars(inputNames);
+    }
+
+    private List<Car> initCars(String inputNames) {
+        List<Car> cars = new ArrayList<>();
         String[] names = inputNames.split(",");
         for (String name : names) {
-            Car car = new Car(name);
-            cars.add(car);
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+
+    public void moveCars(NumberGenerator numberGenerator) {
+        for (Car car : cars) {
+            car.movePosition(numberGenerator);
         }
     }
 }

@@ -1,17 +1,16 @@
 package wooteco.racingcar.model;
 
 public class Car {
-    private String name;
-    private int position;
+    private final String name;
+    private int position = 0;
 
     public Car(String name) {
         this.name = name;
     }
 
-    private void movePosition(NumberGenerator numberGenerator) {
-        int score = numberGenerator.generate();
-        if (score >= 4) {
-            this.position ++;
+    public void movePosition(NumberGenerator numberGenerator) {
+        if (numberGenerator.generate() >= 4) {
+            position ++;
         }
     }
 }
