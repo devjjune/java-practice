@@ -7,14 +7,6 @@ import wooteco.racingcar.model.Result;
 import java.util.*;
 
 public class RaceService {
-    public Map<String, Integer> startRace(String inputNames) {
-        Cars cars = new Cars();
-        CarRace race = new CarRace();
-
-        List<String> carNames = cars.parseInputName(inputNames);
-        return race.initializeScore(carNames);
-    }
-
     public void playEachTurn(Map<String, Integer> carPositions) {
         CarRace carRace = new CarRace();
 
