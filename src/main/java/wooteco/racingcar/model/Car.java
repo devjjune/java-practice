@@ -8,9 +8,10 @@ public class Car {
         this.name = name;
     }
 
-    private void movePosition(int score) {
+    private void movePosition(NumberGenerator numberGenerator) {
+        int score = numberGenerator.generate();
         if (score >= 4) {
-            this.position += 1;
+            this.position ++;
         }
     }
 }

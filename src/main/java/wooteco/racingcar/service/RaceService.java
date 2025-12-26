@@ -1,7 +1,5 @@
 package wooteco.racingcar.service;
 
-import wooteco.racingcar.model.CarRace;
-import wooteco.racingcar.model.Cars;
 import wooteco.racingcar.model.Result;
 
 import java.util.*;
