@@ -23,4 +23,8 @@ public class Cars {
             car.movePosition(numberGenerator);
         }
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
