@@ -9,23 +9,10 @@ public class Cars {
         this.cars = initCars(inputNames);
     }
 
-    private List<Car> initCars(String inputNames) {
-        List<Car> cars = new ArrayList<>();
-        String[] names = inputNames.split(",");
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
-    }
-
     public void moveCars(NumberGenerator numberGenerator) {
         for (Car car : cars) {
             car.movePosition(numberGenerator);
         }
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public List<String> calculateWinners() {
@@ -40,6 +27,15 @@ public class Cars {
         return winners;
     }
 
+    private List<Car> initCars(String inputNames) {
+        List<Car> cars = new ArrayList<>();
+        String[] names = inputNames.split(",");
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+
     private int calculateMaxPosition() {
         int max = 0;
         for (Car car : cars) {
@@ -48,5 +44,9 @@ public class Cars {
             }
         }
         return max;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
