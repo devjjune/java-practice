@@ -5,6 +5,8 @@ import wooteco.racingcar.model.RandomNumberGenerator;
 import wooteco.racingcar.view.RaceInputView;
 import wooteco.racingcar.view.RaceOutputView;
 
+import java.util.List;
+
 public class RaceController {
     public void run() {
         String inputNames = RaceInputView.readNames();
@@ -18,5 +20,8 @@ public class RaceController {
             cars.moveCars(generator);
             RaceOutputView.printEachTry(i + 1, cars.getCars());
         }
+
+        List<String> winners = cars.calculateWinners();
+        RaceOutputView.printWinner(winners);
     }
 }

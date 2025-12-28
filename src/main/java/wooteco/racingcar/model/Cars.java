@@ -28,7 +28,7 @@ public class Cars {
         return cars;
     }
 
-    public List<String> calculateWinners(List<Car> cars) {
+    public List<String> calculateWinners() {
         int maxPosition = calculateMaxPosition();
         List<String> winners = new ArrayList<>();
 
