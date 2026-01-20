@@ -4,7 +4,7 @@
 
 <br>
 
-## 🗂 문제 목록
+## 🗂 문제별 개요 및 회고
 
 ### 우테코 코테 대비 - 구현 중심 문제 풀이
 - [자바 계산기(java-practice-calculator)](docs/wooteco/calculator.md)
